@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 app.post('/processa', async function (req, res) {
   try {
     console.log("Processando consulta: " + req.body.consulta);
-    const { stdout, stderr } = await exec(processa + req.body.consulta);
+    const { stdout, stderr } = await exec(processa + '"' + req.body.consulta + '"');
     res.end(stdout);
   } catch (error) {
     console.log(error);
